@@ -1,48 +1,52 @@
-@model SchoolManagementApp.MVC.Data.Course
+@model SchoolManagementApp.MVC.Data.Class
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Create Course</h1>
+<h1>Edit Class</h1>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly"
                 class="text-danger"></div>
+            <input type="hidden"
+                asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name"
+                <label asp-for="CourseId"
                     class="control-label"></label>
-                <input asp-for="Name"
-                    class="form-control" />
-                <span asp-validation-for="Name"
+                <select asp-for="CourseId"
+                    class="form-control"
+                    asp-items="ViewBag.CourseId"></select>
+                <span asp-validation-for="CourseId"
                     class="text-danger"></span>
             </div>
-            <hr />
+            <br />
             <div class="form-group">
-                <label asp-for="Code"
+                <label asp-for="LecturerId"
                     class="control-label"></label>
-                <input asp-for="Code"
-                    class="form-control" />
-                <span asp-validation-for="Code"
+                <select asp-for="LecturerId"
+                    class="form-control"
+                    asp-items="ViewBag.LecturerId"></select>
+                <span asp-validation-for="LecturerId"
                     class="text-danger"></span>
             </div>
-            <hr />
+            <br />
             <div class="form-group">
-                <label asp-for="Credits"
+                <label asp-for="Time"
                     class="control-label"></label>
-                <input asp-for="Credits"
+                <input asp-for="Time"
                     class="form-control" />
-                <span asp-validation-for="Credits"
+                <span asp-validation-for="Time"
                     class="text-danger"></span>
             </div>
-            <hr />
+            <br />
             <div class="form-group">
                 <input type="submit"
-                    value="Create"
-                    class="btn btn-success" />
+                    value="Save Changes"
+                    class="btn btn-warning" />
                 <a class="btn btn-dark"
                     asp-action="Index">Back to List</a>
             </div>

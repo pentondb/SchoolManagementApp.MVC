@@ -1,27 +1,26 @@
-@model IEnumerable<SchoolManagementApp.MVC.Data.Course>
+@model IEnumerable<SchoolManagementApp.MVC.Data.Enrollment>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Courses</h1>
+<h1>Enrollments</h1>
 
 <p>
     <a class="btn btn-success"
-        asp-action="Create">Create New Course</a>
+        asp-action="Create">Create New Enrollment</a>
 </p>
-<table Course
-    class="table">
+<table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Class)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Code)
+                @Html.DisplayNameFor(model => model.Student)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Credits)
+                @Html.DisplayNameFor(model => model.Grade)
             </th>
             <th></th>
         </tr>
@@ -31,27 +30,27 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Class.Id)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Code)
+                    @Html.DisplayFor(modelItem => item.Student.Id)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Credits)
+                    @Html.DisplayFor(modelItem => item.Grade)
                 </td>
                 <td>
                     <a class="btn btn-warning"
                     asp-action="Edit"
-                    asp-route-id="@item.Id">Edit</a>
+                    asp-route-id="@item.Id">Edit</a> |
                     <a class="btn btn-primary"
                     asp-action="Details"
-                    asp-route-id="@item.Id">Details</a>
+                    asp-route-id="@item.Id">Details</a> |
                     @* <a class="btn btn-danger"
                     asp-action="Delete"
                     asp-route-id="@item.Id">Delete Old</a> *@
-                    <button data-id="@item.Id" 
-                    class="btn btn-danger deleteBtn" 
-                    type="button">Delete</button>
+                    <button data-id="@item.Id"
+                    type="button"
+                    class="btn btn-danger deleteBtn">Delete</button>
                 </td>
             </tr>
         }
@@ -59,13 +58,13 @@
 </table>
 
 <form asp-action="Delete" 
-    id="courseDeleteForm">
+    id="enrollmentDeleteForm">
     <input type="hidden"
-        id="courseid" 
+        id="enrollmentid" 
         name="Id" />
 </form>
 
-@section Scripts{
+@section Scripts {
     <script>
         $(function() {
             $('.table').DataTable();
@@ -87,8 +86,8 @@
                         )
                         var btn = $(this);
                         var id = btn.data("id");
-                        $("#courseid").val(id);
-                        $("#courseDeleteForm").submit();
+                        $("#enrollmentid").val(id);
+                        $("#enrollmentDeleteForm").submit();
                     }
                 })
             })
